@@ -1,7 +1,5 @@
-<h1>
-  To Do List for {{month}}/{{day}}/{{year}}
-</h1>
+<h1>To Do List for {{month}}/{{day}}/{{year}}</h1>
 <h3>{{currentFocus}}</h3>
-<ul>
-  <li *ngFor="let currentTask of tasks">{{currentTask.description}}</li>
-</ul>
+<app-task-list [childTaskList]="masterTaskList" (clickSender)="editTask($event)"></app-task-list>
+<app-edit-task [childSelectedTask]="selectedTask" (clickedDone)="finishedEditing()"></app-edit-task>
+<app-add-task (sendTask)="addTask($event)"></app-add-task>
